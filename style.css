@@ -1,0 +1,11 @@
+body {
+  color: white;
+}
+* {
+  margin: auto;
+}
+table,
+th,
+td {
+  padding: 7px;
+}
