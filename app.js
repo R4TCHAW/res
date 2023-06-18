@@ -1,13 +1,39 @@
 const url = "https://api.thegraph.com/subgraphs/name/aavegotchi/gotchiverse-matic";
 
+const parcelHashesf1 = [
+  "enclose-level-farmer",
+  "kinship-farm-hub"
+];
+console.log();
+
+const parcelHashes3f = [
+  "farmed-points-at",
+  "there-harvest-include",
+  "reading-updates-experiences",
+  "reasonable-linked-into",
+  "ended-among-premises",
+  "please-three-badge",
+  "third-storage-paper",
+  "why-summoned-order",
+];
+
+const parcelHashes54 = [
+  "fortunes-did-introduction",
+  "which-class-top",
+  "store-staking-even"
+];
+
 const parcelHashes = [
+  ...parcelHashes54,
+  ...parcelHashes3f,
+  ...parcelHashesf1,
+  "fortunes-did-introduction",
   "there-harvest-include",
   "third-storage-paper",
   "description-name-traded",
   "nfts-amount-but",
   "look-auction-special",
   "pairs-powerful-ravaged",
-
   "harvest-size-share",
   "affect-next-down",
   "collect-store-gotchi",
@@ -40,12 +66,10 @@ const parcelHashes = [
   "ghst-amounts-farmer",
   "generating-ghst-dapps",
   "point-released-nurture",
-
   "cap-include-over",
   "raffles-ended-cap",
   "staked-fomo-loose",
-
-  "store-staking-even",
+  "store-staking-even"
 ];
 
 const owners = [
@@ -53,8 +77,11 @@ const owners = [
   "0xd757f002d43DcB8dB9A4E43A8350Aa8cCcdC4e4f",
   "0x4d6e3Ff00F77F6e746eBF7f6827800eB99e36910",
   "0xC68C8452be34032ab999787796AE0fAaf071e054",
-  // Add more owners here...
+  "0xbb73548A0e6F839fb58e9D59969Ba6AEdEcDF5f1"
+
 ];
+
+
 
 const query = `
   query {
@@ -72,9 +99,12 @@ const query = `
       parcelHash
       lastClaimedAlchemica
       parcelId
+      owner
     }
   }
 `;
+
+
 
 fetch(url, {
   method: "POST",
@@ -89,7 +119,7 @@ fetch(url, {
 
     const table = document.createElement("table");
 
-    const headers = ["ID", "Parcel Hash", "Last Claimed Alchemica"];
+    const headers = ["ID", "Parcel Hash", "Last Claimed Alchemica", "Parcel ID"];
     const headerRow = document.createElement("tr");
     headers.forEach((header) => {
       const th = document.createElement("th");
@@ -100,7 +130,45 @@ fetch(url, {
 
     parcels.forEach((parcel, index) => {
       const row = document.createElement("tr");
+      const parcelIdCell = document.createElement("td");
+      const link = document.createElement("a");
+      
+console.log(parcel.owner)
+let ratchawGotchi = "";
+let saadGotchi = "";
+  if (parcel.owner.toLowerCase() === "0x17a3831b39cc557296d0c322f9c2d42c0b3a8f3f") {
+    ratchawGotchi = "8015";
+    saadGotchi = "5688";
+  } else if  (parcel.owner.toLowerCase() === "0xd757f002d43dcb8db9a4e43a8350aa8cccdc4e4f") {
+    ratchawGotchi = "18966";
+    saadGotchi = "6576";
+  } else if  (parcel.owner.toLowerCase() === "0xc68c8452be34032ab999787796ae0faaf071e054") {
+    ratchawGotchi = "14520";
+    saadGotchi = "21180";
+  } else if  (parcel.owner.toLowerCase() === "0xbb73548A0e6F839fb58e9D59969Ba6AEdEcDF5f1") {
+    ratchawGotchi = "14054";
+    saadGotchi = "21479";
+  };
+link.href = `https://verse.aavegotchi.com/?spawnId=${parcel.parcelId}&gotchi=${ratchawGotchi}`;
+      
 
+
+
+      
+
+link.textContent = parcel.parcelId;
+parcelIdCell.appendChild(link);
+      row.appendChild(parcelIdCell);  
+
+            const parcelIdCelll = document.createElement("td");
+      const linkk = document.createElement("a");
+linkk.href = `https://verse.aavegotchi.com/?spawnId=${parcel.parcelId}&gotchi=${saadGotchi}`;
+linkk.textContent = parcel.parcelId;
+parcelIdCelll.appendChild(linkk);
+ 
+      row.appendChild(parcelIdCelll);
+
+      
       const idCell = document.createElement("td");
       idCell.textContent = parcel.id;
       row.appendChild(idCell);
@@ -118,7 +186,7 @@ fetch(url, {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
-        hour12: true,
+        hour12: true
       });
       lastClaimedAlchemicaCell.textContent = timeString;
       if (new Date() > date) {
@@ -126,39 +194,36 @@ fetch(url, {
       }
       row.appendChild(lastClaimedAlchemicaCell);
 
+
+
       // Set background color based on index
-      if (index % 2 == 0) {
+      if (index % 2 === 0) {
         row.style.backgroundColor = "green";
       } else {
         row.style.backgroundColor = "green";
       }
 
+
+
       table.appendChild(row);
-      if (
-        ["there-harvest-include", "third-storage-paper", "outside-statistics-next", "form-more-baazaar"].includes(
-          parcel.parcelHash,
-        )
-      ) {
-        parcelHashCell.style.color = "blue";
-      }
-      if (
-        [
-          "craft-ravaged-ticket",
-          "latest-size-details",
-          "it-eyes-closer",
-          "harvest-size-share",
-          "store-staking-even",
-          "affect-next-down",
-          "pairs-powerful-ravaged",
-          "timeline-reasonably-defensive",
-          "haunts-reservoirs-inside",
-        ].includes(parcel.parcelHash)
-      ) {
+// changing color depend on the owner
+ if (parcelHashes3f.includes(parcel.parcelHash)) {
+  parcelHashCell.style.color = "blue";
+}
+      if (parcelHashesf1.includes(parcel.parcelHash)) {
+  parcelHashCell.style.color = "orange";
+}
+      if (parcelHashes54.includes(parcel.parcelHash)) {
+  parcelHashCell.style.color = "DodgerBlue";
+}
+
+      
+
+      if (["craft-ravaged-ticket", "latest-size-details", "it-eyes-closer", "harvest-size-share", "store-staking-even", "affect-next-down", "pairs-powerful-ravaged", "timeline-reasonably-defensive", "haunts-reservoirs-inside"].includes(parcel.parcelHash)) {
         idCell.style.color = "red";
       }
-      if (
-        [
-          "timeline-reasonably-defensive",
+
+      if (["timeline-reasonably-defensive",
           "presale-fallen-kin",
           "haunts-reservoirs-inside",
           "it-eyes-closer",
@@ -187,9 +252,8 @@ fetch(url, {
           "existed-earn-appetite",
           "latest-size-details",
           "existed-earn-appetite",
-          "eventually-forth-ever",
-        ].includes(parcel.parcelHash)
-      ) {
+          "eventually-forth-ever"
+      ].includes(parcel.parcelHash)) {
         parcelHashCell.style.color = "purple";
       }
     });
