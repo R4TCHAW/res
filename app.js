@@ -4,7 +4,6 @@ const parcelHashesf1 = [
   "enclose-level-farmer",
   "kinship-farm-hub"
 ];
-console.log();
 
 const parcelHashes3f = [
   "farmed-points-at",
@@ -241,7 +240,6 @@ parcelIdCelll.appendChild(linkk);
           "aave-market-prevent",
           "liquidated-main-fallen",
           "go-rewards-appetite",
-          "store-staking-even",
           "protects-that-ether",
           "ritual-enter-instead",
           "generating-ghst-dapps",
