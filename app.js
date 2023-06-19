@@ -133,8 +133,8 @@ fetch(url, {
       const link = document.createElement("a");
       
 
-let ratchawGotchi = "14520";
-let saadGotchi = "21180";
+let ratchawGotchi = "14054";
+let saadGotchi = "21479";
   if (parcel.owner.toLowerCase() === "0x17a3831b39cc557296d0c322f9c2d42c0b3a8f3f") {
     ratchawGotchi = "8015";
     saadGotchi = "5688";
