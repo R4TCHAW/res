@@ -1,8 +1,7 @@
 const url = "https://api.thegraph.com/subgraphs/name/aavegotchi/gotchiverse-matic";
 
 const parcelHashesf1 = [
-  "enclose-level-farmer",
-  "kinship-farm-hub"
+  "kinship-farm-hub",
 ];
 
 const parcelHashes3f = [
@@ -216,7 +215,9 @@ parcelIdCelll.appendChild(linkk);
   parcelHashCell.style.color = "DodgerBlue";
 }
 
-      
+      if (["why-summoned-order"].includes(parcel.parcelHash)) {
+        parcelHashCell.style.color = "white";
+      }
 
       if (["craft-ravaged-ticket", "latest-size-details", "it-eyes-closer", "harvest-size-share", "store-staking-even", "affect-next-down", "pairs-powerful-ravaged", "timeline-reasonably-defensive", "haunts-reservoirs-inside"].includes(parcel.parcelHash)) {
         idCell.style.color = "red";
