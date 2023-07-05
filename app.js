@@ -161,6 +161,7 @@ parcelIdCell.appendChild(link);
             const parcelIdCelll = document.createElement("td");
       const linkk = document.createElement("a");
 linkk.href = `https://verse.aavegotchi.com/?spawnId=${parcel.parcelId}&gotchi=${saadGotchi}`;
+linkk.target = "_blank";
 linkk.textContent = parcel.parcelId;
 parcelIdCelll.appendChild(linkk);
  
