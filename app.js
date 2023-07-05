@@ -117,7 +117,7 @@ fetch(url, {
 
     const table = document.createElement("table");
 
-    const headers = ["ID", "Parcel Hash", "Last Claimed Alchemica", "Parcel ID"];
+   const headers = ["C", "RATCHAW", "ItsSAAD", "Parcel ID", "Parcel Hash", "Time"];
     const headerRow = document.createElement("tr");
     headers.forEach((header) => {
       const th = document.createElement("th");
@@ -127,6 +127,13 @@ fetch(url, {
     table.appendChild(headerRow);
 
     parcels.forEach((parcel, index) => {
+        // Add checkbox cell
+  const checkboxCell = document.createElement("td");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkboxCell.appendChild(checkbox);
+  row.appendChild(checkboxCell);
+      
       const row = document.createElement("tr");
       const parcelIdCell = document.createElement("td");
       const link = document.createElement("a");
