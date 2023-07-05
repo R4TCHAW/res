@@ -127,6 +127,7 @@ fetch(url, {
     table.appendChild(headerRow);
 
     parcels.forEach((parcel, index) => {
+            const row = document.createElement("tr");
         // Add checkbox cell
   const checkboxCell = document.createElement("td");
   const checkbox = document.createElement("input");
@@ -134,7 +135,7 @@ fetch(url, {
   checkboxCell.appendChild(checkbox);
   row.appendChild(checkboxCell);
       
-      const row = document.createElement("tr");
+
       const parcelIdCell = document.createElement("td");
       const link = document.createElement("a");
       
