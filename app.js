@@ -148,7 +148,7 @@ let saadGotchi = "21479";
     saadGotchi = "21479";
   };
 link.href = `https://verse.aavegotchi.com/?spawnId=${parcel.parcelId}&gotchi=${ratchawGotchi}`;
-      
+link.target = "_blank";
 
 
 
@@ -198,7 +198,7 @@ parcelIdCelll.appendChild(linkk);
       if (index % 2 === 0) {
         row.style.backgroundColor = "green";
       } else {
-        row.style.backgroundColor = "green";
+        row.style.backgroundColor = "crimson";
       }
 
 
