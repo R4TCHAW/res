@@ -127,25 +127,17 @@ fetch(url, {
     table.appendChild(headerRow);
 
     parcels.forEach((parcel, index) => {
-      const row = document.createElement("tr");
+            const row = document.createElement("tr");
         // Add checkbox cell
   const checkboxCell = document.createElement("td");
-  checkboxCell.id = "myCheckboxCell";
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-      
-
-      // Function to toggle checkbox when the cell is clicked
-checkboxCell.addEventListener("click", function() {
-  checkbox.checked = !checkbox.checked;
-});
-      checkbox.addEventListener("click", function(event) {
-  // Prevent click event propagation to the cell
-  event.stopPropagation();
-});
   checkboxCell.appendChild(checkbox);
   row.appendChild(checkboxCell);
 
+
+      const parcelIdCell = document.createElement("td");
+      const link = document.createElement("a");
 
 
 let ratchawGotchi = "14054";
